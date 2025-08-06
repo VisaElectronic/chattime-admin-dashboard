@@ -1,0 +1,1 @@
+<img src="{{ asset('img/tonsaeay_black.png') }}" alt="PaySafe" class="h-8">
