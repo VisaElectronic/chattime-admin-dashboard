@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\UserResource\Pages;
+namespace App\Filament\Resources\GroupChatResource\Pages;
 
-use App\Filament\Resources\UserResource;
+use App\Filament\Resources\GroupChatResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListUsers extends ListRecords
+class ListGroupChats extends ListRecords
 {
-    protected static string $resource = UserResource::class;
+    protected static string $resource = GroupChatResource::class;
 
     protected function getHeaderActions(): array
     {

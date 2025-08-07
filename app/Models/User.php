@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -25,7 +26,9 @@ class User extends Authenticatable implements HasAvatar
         'name',
         'email',
         'password',
-        'avatar_url'
+        'avatar_url',
+        'firstname',
+        'lastname',
     ];
 
     /**
@@ -51,9 +54,22 @@ class User extends Authenticatable implements HasAvatar
         ];
     }
 
+    public function channel(): HasOne
+    {
+        return $this->hasOne(Channel::class, 'created_by');
+    }
+
     public function getFilamentAvatarUrl(): ?string
     {
         $avatarColumn = config('filament-edit-profile.avatar_column', 'avatar_url');
         return $this->$avatarColumn ? Storage::url($this->$avatarColumn) : null;
+    }
+
+    /**
+     * Get the user's full name.
+     */
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->first_name} {$this->last_name}";
     }
 }
