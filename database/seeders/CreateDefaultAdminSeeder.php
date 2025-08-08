@@ -20,6 +20,8 @@ class CreateDefaultAdminSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@tonsaeay.com',
                 'username' => 'admin',
+                'firstname' => 'Super',
+                'lastname' => 'Admin',
                 'key' => (string) Str::uuid(),
             ]);
         }
