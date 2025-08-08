@@ -23,9 +23,9 @@ return new class extends Migration
             });
         } else {
             Schema::table('users', function (Blueprint $table) {
-                if(!Schema::hasColumn('name')) $table->string('name');
-                if(!Schema::hasColumn('email_verified_at')) $table->timestamp('email_verified_at')->nullable();
-                if(!Schema::hasColumn('remember_token')) $table->rememberToken();
+                if(!Schema::hasColumn('users', 'name')) $table->string('name');
+                if(!Schema::hasColumn('users', 'email_verified_at')) $table->timestamp('email_verified_at')->nullable();
+                if(!Schema::hasColumn('users', 'remember_token')) $table->rememberToken();
             });
         }
 
