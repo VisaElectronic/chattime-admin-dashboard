@@ -123,4 +123,14 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Request Secret
+    |--------------------------------------------------------------------------
+    |
+    | This key is utilized for verify request comming from another server to API.
+    |
+    */
+    'request_secret' => env('APP_REQUEST_SECRET', '')
+
 ];
