@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function sendVerifyEmail(RegistrationOTPDtoData $request)
     {
-        $receiverName = $request->firstname .' '. $request->lastname;
+        $receiverName = '';
         Mail::to($request->email)->send(new EmailRegisterVerification($receiverName, $request->otp));
         return;
     }

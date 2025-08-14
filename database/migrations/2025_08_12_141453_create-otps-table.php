@@ -12,12 +12,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('otps', function (Blueprint $table) {
-            $table->increments('id')->index();
+            $table->id();
             $table->string('identifier')->unique();
             $table->string('token');
             $table->timestamp('validity');
             $table->boolean('valid')->default(true);
             $table->tinyInteger('type')->default(1);
+            $table->unsignedBigInteger('resend_ref_id')->nullable();
+            $table->foreign('resend_ref_id')
+                ->references('id')
+                ->on('otps')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
