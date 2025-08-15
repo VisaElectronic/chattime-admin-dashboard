@@ -8,26 +8,22 @@
     <style>
         /* Basic Reset and Body Styles */
         body {
+            width: 100%;
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f7f7f7;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align to top for better responsiveness on small screens */
             min-height: 100vh;
             color: #333;
         }
 
         /* Container for the entire card */
         .container {
+            display: flex;
             background-color: #fff;
-            padding: 40px;
-            margin: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             width: 100%;
-            max-width: 500px; /* Max width for desktop view */
             box-sizing: border-box; /* Include padding in width */
         }
 
@@ -78,6 +74,11 @@
         .go-button:hover {
             background-color: #f0f0f0;
             border-color: #ccc;
+        }
+
+        .main-content {
+            width: 500px;
+            margin: 0 auto;
         }
 
         /* Main content area */
@@ -188,13 +189,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        {{-- <div class="header">
             <div class="logo">
                 <img src="{{asset('img/tonsaeay.png')}}" alt="Tonsaeay Chat">
-                {{-- <span class="logo-text">Tonsaeay</span> --}}
+                <span class="logo-text">Tonsaeay</span>
             </div>
-            {{-- <button class="go-button">Go to Tonsaeay Chat</button> --}}
-        </div>
+            <button class="go-button">Go to Tonsaeay Chat</button>
+        </div> --}}
 
         <div class="main-content">
             <h1>Complete registration</h1>
