@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Notifications\ResetPasswordNotification;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements HasAvatar, FilamentUser
@@ -54,6 +56,23 @@ class User extends Authenticatable implements HasAvatar, FilamentUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        try {
+            $resetUrl = config('app.chat_web_url').'/reset-password?token='.$token.'&email='.$this->email;
+            $this->notify(new ResetPasswordNotification($resetUrl));
+        } catch (\Throwable $th) {
+            Log::error($th);
+            throw $th;
+        }
     }
 
     public function canAccessPanel(Panel $panel): bool

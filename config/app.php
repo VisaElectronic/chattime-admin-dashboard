@@ -131,6 +131,8 @@ return [
     | This key is utilized for verify request comming from another server to API.
     |
     */
-    'request_secret' => env('APP_REQUEST_SECRET', '')
+    'request_secret' => env('APP_REQUEST_SECRET', ''),
+
+    'chat_web_url' => env('APP_CHAT_WEB_URL', 'http://localhost:3000')
 
 ];
