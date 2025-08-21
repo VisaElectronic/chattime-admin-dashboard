@@ -37,7 +37,7 @@ class ResetPasswordNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Reset Password')
-            ->line('To reset your password, click the link below:')
+            ->line('To reset your password:')
             ->action('Reset Password', $this->resetUrl)
             ->line('Thank you for using our application!');
     }
